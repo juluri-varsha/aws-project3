@@ -21,25 +21,15 @@ import java.util.Map;
 		name = "async_queue",
 		resourceType = ResourceType.SQS_QUEUE
 )
-@SqsTriggerEventSource(queueName = "async_queue")  // Add the trigger here
-public class SqsHandler implements RequestHandler<Map<String, Object>, Map<String, Object>> {
+public class SqsHandler implements RequestHandler<Object, Map<String, Object>> {
 
-	@Override
-	public Map<String, Object> handleRequest(Map<String, Object> event, Context context) {
+	public Map<String, Object> handleRequest(Object request, Context context) {
 		LambdaLogger lambdaLogger = context.getLogger();
-		// Assuming the event is a map and contains the 'body' key as the message
-		Object message = event.get("body");
-
-		// Log the message content
-		lambdaLogger.log("Received message: " + message);
-
-		System.out.println("Message content: " + message);
-
-		// Return a simple result
-		Map<String, Object> result = new HashMap<>();
+		lambdaLogger.log(request.toString());
+		System.out.println("Hello from lambda");
+		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("statusCode", 200);
-		result.put("body", "Message processed successfully");
-
+		result.put("body", "Hello from Lambda");
 		return result;
 	}
 }
