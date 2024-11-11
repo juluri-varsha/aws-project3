@@ -13,11 +13,13 @@
     "timeout" : 300,
     "subnet_ids" : [ ],
     "security_group_ids" : [ ],
-    "dependencies" : [ ],
+    "dependencies" : [ {
+      "resource_name" : "async_queue",
+      "resource_type" : "sqs_queue"
+    } ],
     "event_sources" : [ ],
     "env_variables" : { },
-    "publish_version" : true,
-    "alias" : "${lambdas_alias_name}",
+    "publish_version" : false,
     "logs_expiration" : "${logs_expiration}",
     "snap_start" : "None"
   },
