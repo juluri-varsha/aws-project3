@@ -26,27 +26,22 @@
     "resource_type": "iam_policy"
   },
   "sqs_handler-role": {
-    "predefined_policies": [
-      "AWSLambdaSQSQueueExecutionRole"
-    ],
+    "predefined_policies": [],
     "principal_service": "lambda",
     "custom_policies": [
-      "custom_execution"
+      "lambda-basic-execution"
     ],
-    "resource_type": "iam_role"
+    "resource_type": "iam_role",
+    "tags": {}
   },
   "sns_handler-role": {
-    "resource_type": "iam_role",
+    "predefined_policies": [],
     "principal_service": "lambda",
-    "predefined_policies": [
-      "AWSLambdaSQSQueueExecutionRole"
-    ],
     "custom_policies": [
-      "custom_execution"
+      "lambda-basic-execution"
     ],
-    "allowed_accounts": [],
-    "instance_profile": false,
-    "permissions_boundary": ""
+    "resource_type": "iam_role",
+    "tags": {}
   },
   "async_queue": {
     "resource_type": "sqs_queue",
