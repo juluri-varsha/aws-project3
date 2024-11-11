@@ -1,5 +1,5 @@
 {
-  "lambda-basic-execution": {
+  "custom_execution": {
     "policy_content": {
       "Statement": [
         {
@@ -14,7 +14,8 @@
             "dynamodb:DeleteItem",
             "ssm:PutParameter",
             "ssm:GetParameter",
-            "kms:Decrypt"
+            "kms:Decrypt",
+            "lambda:CreateEventSourceMapping"
           ],
           "Effect": "Allow",
           "Resource": "*"
@@ -22,7 +23,45 @@
       ],
       "Version": "2012-10-17"
     },
-    "resource_type": "iam_policy",
-    "tags": {}
+    "resource_type": "iam_policy"
+  },
+  "sqs_handler-role": {
+    "predefined_policies": [
+      "AWSLambdaSQSQueueExecutionRole"
+    ],
+    "principal_service": "lambda",
+    "custom_policies": [
+      "custom_execution"
+    ],
+    "resource_type": "iam_role"
+  },
+  "sns_handler-role": {
+    "resource_type": "iam_role",
+    "principal_service": "lambda",
+    "predefined_policies": [
+      "AWSLambdaSQSQueueExecutionRole"
+    ],
+    "custom_policies": [
+      "custom_execution"
+    ],
+    "allowed_accounts": [],
+    "instance_profile": false,
+    "permissions_boundary": ""
+  },
+  "async_queue": {
+    "resource_type": "sqs_queue",
+    "fifo_queue": false,
+    "visibility_timeout": 300,
+    "delay_seconds": 0,
+    "maximum_message_size": 1024,
+    "message_retention_period": 60,
+    "receive_message_wait_time_seconds": 0,
+    "policy": {},
+    "content_based_deduplication": false
+  },
+  "lambda_topic": {
+    "resource_type": "sns_topic",
+    "region": "eu-central-1",
+    "event_sources": []
   }
 }
