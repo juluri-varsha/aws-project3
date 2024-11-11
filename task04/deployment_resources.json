@@ -1,5 +1,5 @@
 {
-  "custom_execution": {
+  "lambda-basic-execution": {
     "policy_content": {
       "Statement": [
         {
@@ -23,10 +23,13 @@
       ],
       "Version": "2012-10-17"
     },
-    "resource_type": "iam_policy"
+    "resource_type": "iam_policy",
+    "tags": {}
   },
   "sqs_handler-role": {
-    "predefined_policies": [],
+    "predefined_policies": [
+      "AWSLambdaSQSQueueExecutionRole"
+    ],
     "principal_service": "lambda",
     "custom_policies": [
       "lambda-basic-execution"
@@ -35,7 +38,9 @@
     "tags": {}
   },
   "sns_handler-role": {
-    "predefined_policies": [],
+    "predefined_policies": [
+      "AWSLambdaSQSQueueExecutionRole"
+    ],
     "principal_service": "lambda",
     "custom_policies": [
       "lambda-basic-execution"
@@ -52,7 +57,9 @@
     "message_retention_period": 60,
     "receive_message_wait_time_seconds": 0,
     "policy": {},
-    "content_based_deduplication": false
+    "redrive_policy": {},
+    "content_based_deduplication": false,
+    "tags": {}
   },
   "lambda_topic": {
     "resource_type": "sns_topic",
