@@ -20,6 +20,7 @@
     },
     "tracing_mode" : "Active",
     "publish_version" : false,
+    "alias" : "learn",
     "logs_expiration" : "${logs_expiration}",
     "snap_start" : "None",
     "url_config" : {
