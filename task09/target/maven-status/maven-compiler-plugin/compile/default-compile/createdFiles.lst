@@ -1,4 +1,5 @@
 com\task09\HourlyData.class
 com\task09\WeatherForecast.class
+com\task09\CreateLambdaAlias.class
 com\task09\HourlyUnits.class
 com\task09\Processor.class
