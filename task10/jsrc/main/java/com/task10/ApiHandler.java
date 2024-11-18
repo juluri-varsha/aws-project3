@@ -34,7 +34,7 @@ import java.util.*;
 		@EnvironmentVariable(key = "tables_table", value = "${tables_table}"),
 		@EnvironmentVariable(key = "reservations_table", value = "${reservations_table}"),
 		@EnvironmentVariable(key = "booking_userpool", value = "${booking_userpool}")})
-public class APIHandler implements RequestHandler<APIHandler.APIRequest, APIGatewayV2HTTPResponse> {
+public class ApiHandler implements RequestHandler<ApiHandler.APIRequest, APIGatewayV2HTTPResponse> {
 
 	private final ObjectMapper objectMapper = new ObjectMapper().setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
